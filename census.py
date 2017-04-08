@@ -1,19 +1,11 @@
-"""
-COMS W1002 Sec 001
-Homework 3
-Problem 6: Chapter 7 Exercise 58
-Author: Gregory V. Cuesta
-UNI: gvc2108
-Date: 10/31/2016
-"""
 
 f = open('urpop0090.txt','r')
 file = f.read()
 
-#index each line in a list as a string
+# index each line in a list as a string
 fileSplit = file.split('\n')
 
-#clean out data
+# clean out data
 cleanList = []
 for element in fileSplit:
     if element.endswith('%'):
@@ -24,13 +16,13 @@ for element in fileSplit:
         else:
             cleanList.append(element)
       
-#split fields of each line into elements in a list
+# split fields of each line into elements in a list
 splitList = []
 for element in cleanList:
     
     element = element.split()
     
-    #make two-worded states into a single string i.e. 'New', 'York, --> 'New York'
+    # make two-worded states into a single string i.e. 'New', 'York, --> 'New York'
     if len(element) == 7:
         element[1] = element[0] + ' ' + element[1]
         del element[0]        
@@ -38,7 +30,7 @@ for element in cleanList:
         element[1] = element[0] + ' ' + element[1]
         del element[0] 
     
-    #make 'District', 'of', 'Columbia' into 'District of Columbia'
+    # make 'District', 'of', 'Columbia' into 'District of Columbia'
     elif len(element) == 8:
         element[2] = element[0] + ' ' + element[1] + ' ' + element[2]
         del element[0]
@@ -50,7 +42,7 @@ for element in cleanList:
 
     splitList.append(element)
 
-#remove commas and unwanted columns
+# remove commas and unwanted columns
 minList = []
 for element in splitList:
     if len(element) == 6:
@@ -69,7 +61,7 @@ for element in splitList:
         element[3] = element[3].replace(',','')
         minList.append(element)
         
-#group by census year
+# group by census year
 list1990 = []
 list1980 = []
 list1970 = []
